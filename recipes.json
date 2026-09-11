@@ -1,0 +1,240 @@
+[
+  {
+    "id": "R001",
+    "name": "Paneer Butter Masala",
+    "category": "Indian Vegetarian",
+    "dietary": ["vegetarian"],
+    "cooking_time_minutes": 35,
+    "servings": 4,
+    "spice_level": "medium",
+    "ingredients": [
+      "paneer", "butter", "onion", "tomato", "garlic", "ginger",
+      "heavy cream", "kashmiri red chili powder", "garam masala",
+      "cumin seeds", "bay leaf", "salt", "sugar", "kasuri methi", "oil"
+    ],
+    "description": "Creamy, rich North Indian curry with paneer cubes in a tomato-butter-cream sauce.",
+    "tags": ["curry", "creamy", "north-indian", "restaurant-style"]
+  },
+  {
+    "id": "R002",
+    "name": "Dal Tadka",
+    "category": "Indian Vegetarian",
+    "dietary": ["vegetarian", "vegan"],
+    "cooking_time_minutes": 30,
+    "servings": 4,
+    "spice_level": "medium",
+    "ingredients": [
+      "yellow lentils", "onion", "tomato", "garlic", "ginger",
+      "cumin seeds", "mustard seeds", "turmeric", "red chili powder",
+      "coriander powder", "garam masala", "ghee", "salt", "cilantro"
+    ],
+    "description": "Classic Indian lentil soup tempered with spices and ghee. Nutritious and comforting.",
+    "tags": ["lentils", "protein", "comfort-food", "everyday"]
+  },
+  {
+    "id": "R003",
+    "name": "Chicken Tikka Masala",
+    "category": "Indian Non-Vegetarian",
+    "dietary": ["non-vegetarian"],
+    "cooking_time_minutes": 50,
+    "servings": 4,
+    "spice_level": "medium",
+    "ingredients": [
+      "chicken breast", "yogurt", "onion", "tomato", "garlic", "ginger",
+      "heavy cream", "kashmiri red chili powder", "garam masala",
+      "cumin", "coriander", "turmeric", "oil", "butter", "salt", "cilantro"
+    ],
+    "description": "Marinated grilled chicken in a spiced, creamy tomato sauce. One of India's most loved dishes.",
+    "tags": ["chicken", "curry", "marinated", "popular"]
+  },
+  {
+    "id": "R004",
+    "name": "Aloo Gobi",
+    "category": "Indian Vegetarian",
+    "dietary": ["vegetarian", "vegan"],
+    "cooking_time_minutes": 25,
+    "servings": 3,
+    "spice_level": "mild",
+    "ingredients": [
+      "potato", "cauliflower", "onion", "tomato", "garlic", "ginger",
+      "cumin seeds", "turmeric", "coriander powder", "red chili powder",
+      "garam masala", "oil", "salt", "cilantro"
+    ],
+    "description": "Dry stir-fry of potatoes and cauliflower cooked with aromatic spices.",
+    "tags": ["dry-sabzi", "everyday", "simple", "vegan"]
+  },
+  {
+    "id": "R005",
+    "name": "Egg Fried Rice",
+    "category": "Quick Meals",
+    "dietary": ["vegetarian"],
+    "cooking_time_minutes": 15,
+    "servings": 2,
+    "spice_level": "mild",
+    "ingredients": [
+      "cooked rice", "eggs", "onion", "garlic", "carrot",
+      "green peas", "soy sauce", "sesame oil", "black pepper",
+      "spring onion", "oil", "salt"
+    ],
+    "description": "Quick and satisfying fried rice with scrambled eggs and vegetables.",
+    "tags": ["quick", "rice", "egg", "chinese-style"]
+  },
+  {
+    "id": "R006",
+    "name": "Masoor Dal Soup",
+    "category": "Quick Meals",
+    "dietary": ["vegetarian", "vegan"],
+    "cooking_time_minutes": 20,
+    "servings": 2,
+    "spice_level": "mild",
+    "ingredients": [
+      "red lentils", "onion", "garlic", "tomato", "cumin",
+      "turmeric", "lemon juice", "olive oil", "salt", "pepper", "cilantro"
+    ],
+    "description": "Light and nourishing red lentil soup ready in under 20 minutes.",
+    "tags": ["soup", "quick", "healthy", "vegan"]
+  },
+  {
+    "id": "R007",
+    "name": "Palak Paneer",
+    "category": "Indian Vegetarian",
+    "dietary": ["vegetarian"],
+    "cooking_time_minutes": 30,
+    "servings": 3,
+    "spice_level": "mild",
+    "ingredients": [
+      "spinach", "paneer", "onion", "tomato", "garlic", "ginger",
+      "cumin", "garam masala", "turmeric", "red chili powder",
+      "cream", "butter", "salt", "oil"
+    ],
+    "description": "Cottage cheese cubes in a smooth, vibrant spinach gravy. Iron-rich and wholesome.",
+    "tags": ["spinach", "healthy", "green", "creamy"]
+  },
+  {
+    "id": "R008",
+    "name": "Chicken Biryani",
+    "category": "Indian Non-Vegetarian",
+    "dietary": ["non-vegetarian"],
+    "cooking_time_minutes": 70,
+    "servings": 5,
+    "spice_level": "hot",
+    "ingredients": [
+      "basmati rice", "chicken", "yogurt", "onion", "tomato", "garlic",
+      "ginger", "mint leaves", "cilantro", "saffron", "milk", "ghee",
+      "biryani masala", "whole spices", "red chili powder", "salt", "oil"
+    ],
+    "description": "Fragrant layered rice dish with spiced chicken, herbs and saffron. A celebratory classic.",
+    "tags": ["rice", "celebration", "layered", "aromatic"]
+  },
+  {
+    "id": "R009",
+    "name": "Vegan Chana Masala",
+    "category": "Indian Vegan",
+    "dietary": ["vegan", "vegetarian"],
+    "cooking_time_minutes": 30,
+    "servings": 4,
+    "spice_level": "medium",
+    "ingredients": [
+      "chickpeas", "onion", "tomato", "garlic", "ginger",
+      "cumin", "coriander", "turmeric", "garam masala",
+      "amchur powder", "chili powder", "oil", "salt", "cilantro"
+    ],
+    "description": "Bold and tangy chickpea curry packed with protein and spices. 100% vegan.",
+    "tags": ["chickpea", "protein", "tangy", "vegan"]
+  },
+  {
+    "id": "R010",
+    "name": "Vegetable Pulao",
+    "category": "Quick Meals",
+    "dietary": ["vegetarian", "vegan"],
+    "cooking_time_minutes": 20,
+    "servings": 3,
+    "spice_level": "mild",
+    "ingredients": [
+      "basmati rice", "carrot", "green peas", "potato", "onion",
+      "cumin seeds", "bay leaf", "cloves", "cardamom", "ghee",
+      "salt", "mint leaves"
+    ],
+    "description": "Lightly spiced fragrant rice with mixed vegetables. Simple weekday favourite.",
+    "tags": ["rice", "quick", "mild", "vegan"]
+  },
+  {
+    "id": "R011",
+    "name": "Mutton Rogan Josh",
+    "category": "Indian Non-Vegetarian",
+    "dietary": ["non-vegetarian"],
+    "cooking_time_minutes": 80,
+    "servings": 4,
+    "spice_level": "hot",
+    "ingredients": [
+      "mutton", "yogurt", "onion", "garlic", "ginger", "tomato",
+      "kashmiri red chili", "fennel powder", "garam masala",
+      "cardamom", "cloves", "cinnamon", "bay leaf", "oil", "salt"
+    ],
+    "description": "Aromatic Kashmiri lamb curry with deep red colour and bold flavours.",
+    "tags": ["mutton", "kashmiri", "aromatic", "spicy"]
+  },
+  {
+    "id": "R012",
+    "name": "Tofu Stir Fry",
+    "category": "Quick Meals",
+    "dietary": ["vegan", "vegetarian"],
+    "cooking_time_minutes": 15,
+    "servings": 2,
+    "spice_level": "mild",
+    "ingredients": [
+      "tofu", "broccoli", "bell pepper", "carrot", "garlic",
+      "ginger", "soy sauce", "sesame oil", "cornstarch",
+      "vegetable broth", "spring onion", "oil", "chili flakes"
+    ],
+    "description": "Crispy tofu with colourful vegetables in a savoury garlic-ginger sauce. Done in 15 minutes.",
+    "tags": ["tofu", "vegan", "quick", "stir-fry"]
+  },
+  {
+    "id": "R013",
+    "name": "Rajma Chawal",
+    "category": "Indian Vegetarian",
+    "dietary": ["vegetarian", "vegan"],
+    "cooking_time_minutes": 45,
+    "servings": 4,
+    "spice_level": "medium",
+    "ingredients": [
+      "kidney beans", "onion", "tomato", "garlic", "ginger",
+      "cumin", "coriander", "turmeric", "garam masala", "red chili powder",
+      "oil", "salt", "cilantro", "basmati rice"
+    ],
+    "description": "Hearty kidney bean curry served over steamed rice. A North Indian Sunday staple.",
+    "tags": ["kidney-beans", "comfort", "protein", "everyday"]
+  },
+  {
+    "id": "R014",
+    "name": "Omelette Wrap",
+    "category": "Quick Meals",
+    "dietary": ["vegetarian"],
+    "cooking_time_minutes": 10,
+    "servings": 1,
+    "spice_level": "mild",
+    "ingredients": [
+      "eggs", "flatbread", "onion", "tomato", "bell pepper",
+      "green chili", "salt", "pepper", "butter", "cheese"
+    ],
+    "description": "Fluffy egg omelette wrapped in flatbread with fresh veggies. Perfect breakfast or snack.",
+    "tags": ["breakfast", "quick", "egg", "wrap"]
+  },
+  {
+    "id": "R015",
+    "name": "Vegan Buddha Bowl",
+    "category": "Quick Meals",
+    "dietary": ["vegan", "vegetarian"],
+    "cooking_time_minutes": 20,
+    "servings": 2,
+    "spice_level": "mild",
+    "ingredients": [
+      "quinoa", "chickpeas", "avocado", "spinach", "carrot",
+      "cucumber", "cherry tomato", "lemon juice", "olive oil",
+      "tahini", "garlic", "salt", "sesame seeds"
+    ],
+    "description": "Nourishing, colourful bowl with grains, legumes and fresh vegetables topped with tahini dressing.",
+    "tags": ["healthy", "bowl", "balanced", "vegan"]
+  }
+]

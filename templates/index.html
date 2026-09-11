@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartRecipe – AI Recipe Preparation Agent</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+
+  <!-- ═══════════════ HEADER ═══════════════ -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <div class="logo">
+          <span class="logo-icon">🍳</span>
+          <span class="logo-text">SmartRecipe</span>
+        </div>
+        <p class="tagline">AI-Powered Recipe Preparation Agent &nbsp;·&nbsp; Powered by IBM Granite</p>
+        <div id="mode-badge" class="badge badge--loading">Checking…</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">What's in your kitchen?</h1>
+      <p class="hero-subtitle">
+        Enter the ingredients you have and let our AI agent retrieve the best matching recipes
+        from its knowledge base and craft a personalised meal just for you.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+  <main class="container main-grid">
+
+    <!-- ── LEFT: Input Panel ── -->
+    <section class="card input-panel" aria-label="Recipe request form">
+      <h2 class="card-title">
+        <span class="step-num">1</span> Tell us what you have
+      </h2>
+
+      <form id="recipe-form" novalidate>
+
+        <!-- Ingredients -->
+        <div class="form-group">
+          <label for="ingredients" class="form-label">
+            Available Ingredients <span class="required">*</span>
+          </label>
+          <textarea
+            id="ingredients"
+            name="ingredients"
+            class="form-control textarea"
+            rows="4"
+            placeholder="e.g. tomato, onion, paneer, garlic, ginger, cumin seeds"
+            required
+          ></textarea>
+          <p class="form-hint">Separate ingredients with commas or new lines.</p>
+        </div>
+
+        <!-- Quick-fill chips -->
+        <div class="chip-row" aria-label="Quick-fill examples">
+          <span class="chip-label">Quick fill:</span>
+          <button type="button" class="chip" data-fill="tomato, onion, paneer, garlic, cream, butter">🧀 Paneer</button>
+          <button type="button" class="chip" data-fill="chicken, yogurt, onion, garlic, ginger, tomato, cream">🍗 Chicken</button>
+          <button type="button" class="chip" data-fill="chickpeas, onion, garlic, tomato, cumin, coriander">🫘 Chickpea</button>
+          <button type="button" class="chip" data-fill="eggs, onion, bell pepper, cheese, butter">🥚 Egg</button>
+          <button type="button" class="chip" data-fill="tofu, broccoli, soy sauce, garlic, sesame oil">🥦 Vegan</button>
+        </div>
+
+        <!-- Preference grid -->
+        <div class="prefs-grid">
+
+          <div class="form-group">
+            <label for="servings" class="form-label">Servings</label>
+            <select id="servings" name="servings" class="form-control">
+              <option value="1">1 person</option>
+              <option value="2" selected>2 people</option>
+              <option value="3">3 people</option>
+              <option value="4">4 people</option>
+              <option value="6">6 people</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="dietary_pref" class="form-label">Dietary Preference</label>
+            <select id="dietary_pref" name="dietary_pref" class="form-control">
+              <option value="none">No restriction</option>
+              <option value="vegetarian">Vegetarian</option>
+              <option value="vegan">Vegan</option>
+              <option value="non-vegetarian">Non-Vegetarian</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="max_time" class="form-label">Max Cooking Time</label>
+            <select id="max_time" name="max_time" class="form-control">
+              <option value="15">15 minutes</option>
+              <option value="30">30 minutes</option>
+              <option value="60" selected>60 minutes</option>
+              <option value="90">90 minutes</option>
+              <option value="180">No limit</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="spice_level" class="form-label">Spice Level</label>
+            <select id="spice_level" name="spice_level" class="form-control">
+              <option value="mild">🌶 Mild</option>
+              <option value="medium" selected>🌶🌶 Medium</option>
+              <option value="hot">🌶🌶🌶 Hot</option>
+              <option value="any">Any</option>
+            </select>
+          </div>
+
+        </div><!-- /prefs-grid -->
+
+        <!-- Submit -->
+        <button type="submit" id="submit-btn" class="btn btn--primary btn--full">
+          <span class="btn-text">🍽 Generate My Recipe</span>
+          <span class="btn-loading" hidden>
+            <span class="spinner"></span> Generating…
+          </span>
+        </button>
+
+      </form><!-- /recipe-form -->
+    </section>
+
+    <!-- ── RIGHT: Result Panel ── -->
+    <section class="result-panel" aria-live="polite" aria-label="Recipe result">
+
+      <!-- Idle state -->
+      <div id="idle-state" class="card idle-card">
+        <div class="idle-illustration">🥗</div>
+        <h3>Your recipe will appear here</h3>
+        <p>Enter your ingredients on the left and click <strong>Generate My Recipe</strong>.</p>
+        <ul class="feature-list">
+          <li>✅ Retrieves matching recipes from a local knowledge base</li>
+          <li>✅ Uses IBM Granite (watsonx.ai) for personalised generation</li>
+          <li>✅ Provides substitutions, tips & food-waste suggestions</li>
+          <li>✅ Fully agentic multi-step AI pipeline</li>
+        </ul>
+      </div>
+
+      <!-- Loading state -->
+      <div id="loading-state" class="card loading-card" hidden>
+        <div class="loading-animation">
+          <div class="cooking-icon">👨‍🍳</div>
+        </div>
+        <h3>Cooking up your recipe…</h3>
+        <div id="step-tracker" class="step-tracker"></div>
+      </div>
+
+      <!-- Error state -->
+      <div id="error-state" class="card error-card" hidden>
+        <div class="error-icon">⚠️</div>
+        <h3>Something went wrong</h3>
+        <p id="error-message"></p>
+        <button class="btn btn--secondary" onclick="resetUI()">Try Again</button>
+      </div>
+
+      <!-- Result state -->
+      <div id="result-state" hidden>
+
+        <!-- Meta bar -->
+        <div class="result-meta card">
+          <div class="meta-row">
+            <div class="meta-item">
+              <span class="meta-label">AI Engine</span>
+              <span id="meta-model" class="meta-value"></span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Mode</span>
+              <span id="meta-mode" class="meta-value badge"></span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Time</span>
+              <span id="meta-time" class="meta-value"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Demo banner -->
+        <div id="demo-banner" class="demo-banner" hidden>
+          <strong>⚠️ Demo Mode:</strong> IBM Granite credentials are not configured.
+          Set <code>WATSONX_API_KEY</code> and <code>WATSONX_PROJECT_ID</code> in your
+          <code>.env</code> file to enable live AI generation.
+        </div>
+
+        <!-- Retrieved recipes -->
+        <div class="card retrieved-section">
+          <h3 class="section-title">
+            <span class="step-num">2</span>
+            Retrieved from Knowledge Base
+          </h3>
+          <div id="retrieved-recipes" class="retrieved-grid"></div>
+        </div>
+
+        <!-- Generated recipe -->
+        <div class="card recipe-card">
+          <h3 class="section-title">
+            <span class="step-num">3</span>
+            Your Personalised Recipe
+          </h3>
+          <div id="recipe-content" class="recipe-content markdown-body"></div>
+        </div>
+
+        <!-- Agent trace -->
+        <details class="card agent-trace">
+          <summary class="trace-summary">
+            <span class="step-num">⚙</span>
+            How the Agent Worked – Step-by-Step Execution Trace
+          </summary>
+          <div id="agent-steps" class="agent-steps-list"></div>
+        </details>
+
+        <!-- Actions -->
+        <div class="result-actions">
+          <button class="btn btn--secondary" onclick="resetUI()">🔄 New Recipe</button>
+          <button class="btn btn--outline" onclick="printRecipe()">🖨 Print Recipe</button>
+        </div>
+
+      </div><!-- /result-state -->
+
+    </section>
+  </main>
+
+  <!-- ═══════════════ HOW IT WORKS ═══════════════ -->
+  <section class="how-it-works">
+    <div class="container">
+      <h2 class="section-heading">How SmartRecipe Works</h2>
+      <div class="pipeline">
+        <div class="pipeline-step">
+          <div class="pipeline-icon">📝</div>
+          <div class="pipeline-label">User Input</div>
+          <div class="pipeline-desc">Ingredients + preferences entered via the web UI</div>
+        </div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step">
+          <div class="pipeline-icon">🤖</div>
+          <div class="pipeline-label">Recipe Agent</div>
+          <div class="pipeline-desc">Orchestrates a 5-step tool pipeline</div>
+        </div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step">
+          <div class="pipeline-icon">🔍</div>
+          <div class="pipeline-label">RAG Retrieval</div>
+          <div class="pipeline-desc">TF-IDF search over recipes.json knowledge base</div>
+        </div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step">
+          <div class="pipeline-icon">🧠</div>
+          <div class="pipeline-label">IBM Granite</div>
+          <div class="pipeline-desc">Generates recipe from RAG context + user request</div>
+        </div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step">
+          <div class="pipeline-icon">🍽</div>
+          <div class="pipeline-label">Personalised Recipe</div>
+          <div class="pipeline-desc">Detailed recipe with tips, substitutions & more</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>SmartRecipe &nbsp;·&nbsp; AICTE Problem Statement 16 &nbsp;·&nbsp; Built with IBM Granite & watsonx.ai</p>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
